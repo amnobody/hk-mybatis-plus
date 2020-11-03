@@ -43,4 +43,11 @@ public class RoleController {
     public Object saveBatch(String roleName) {
         return roleService.saveBatch(roleName);
     }
+
+
+    @RequestMapping(value = "saveBatchColumn")
+    public Object saveBatchColumn(String roleName) {
+        roleService.saveBatchColumn(roleName);
+        return new Object();
+    }
 }

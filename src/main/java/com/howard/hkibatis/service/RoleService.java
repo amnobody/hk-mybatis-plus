@@ -9,6 +9,7 @@ import com.howard.hkibatis.entity.Role;
 import com.howard.hkibatis.mapper.RoleMapper;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,6 +23,10 @@ import java.util.List;
 @Service
 public class RoleService extends ServiceImpl<RoleMapper, Role> {
 
+    @Resource
+    RoleMapper roleMapper;
+
+
     public boolean saveBatch(String roleName) {
         List<Role> roleList = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
@@ -30,6 +35,16 @@ public class RoleService extends ServiceImpl<RoleMapper, Role> {
             roleList.add(role);
         }
         return super.saveBatch(roleList);
+    }
+
+    public void saveBatchColumn(String roleName) {
+        List<Role> roleList = new ArrayList<>();
+        for (int i = 100; i < 300; i++) {
+            Role role = new Role();
+            role.setRoleName(roleName + i);
+            roleList.add(role);
+        }
+        roleMapper.insertBatchSomeColumn(roleList);
     }
 
     public IPage<Role> selectPage(Page<Role> page) {

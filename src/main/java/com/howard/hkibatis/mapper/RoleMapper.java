@@ -11,5 +11,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @description
  */
 @Mapper
-public interface RoleMapper extends BaseMapper<Role> {
+public interface RoleMapper extends EasyBaseMapper<Role> {
 }
